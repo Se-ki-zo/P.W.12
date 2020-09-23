@@ -6,11 +6,13 @@ const {
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.status(404).send('<h1>Страница не найдена</h1>');
-});
+app.use(express.static('public')); // раздаем статику
+//app.use(express.static(__dirname + '/public')); // теперь клиент имеет доступ только к публичным файлам // test
+
+// app.get('/', (req, res) => { // ???
+//   res.send();
+// });
 
 app.listen(PORT, () => { // need
-  // Если всё работает, консоль покажет, какой порт приложение слушает
   console.log(`App listening on port ${PORT}`);
 });
