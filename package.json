@@ -5,14 +5,16 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "lint": "eslint ./",
+    "lintFix": "eslint ./ --fix"
   },
   "author": "Sekizo",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^7.2.0",
+    "eslint": "^7.10.0",
     "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-vue": "^6.2.2",
     "nodemon": "^2.0.4"
   },

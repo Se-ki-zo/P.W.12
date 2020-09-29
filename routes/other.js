@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const path = require('path');
+// const path = require('path');
 
-router.get('/:unknown', (req, res) => { // bad url
+router.get('/*', (req, res) => { // bad url
   res.status(404).send(JSON.stringify({
-    "message": "Запрашиваемый ресурс не найден"
+    message: 'Запрашиваемый ресурс не найден',
   }));
 });
 
