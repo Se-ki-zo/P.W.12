@@ -1,12 +1,14 @@
 const router = require('express').Router();
-const fs = require('fs').promises;
+const path = require('path');
+const fs = require('fs');
 
-const userJson = require('../data/users.json');
+const filepath = path.resolve('data', 'users.json');
+// const userJson = require('../data/users.json'); // err
 
 router.get('/users', (req, res) => { // users req
-  fs.readFile('./data/users.json', 'utf8')
+  fs.promises.readFile(filepath, 'utf8')
     .then((data) => {
-      res.send(data);
+      res.send(JSON.parse(data));
     })
     .catch(() => res.status(500).send(JSON.stringify({
       message: 'Запрашиваемый ресурс не найден',
@@ -14,6 +16,7 @@ router.get('/users', (req, res) => { // users req
 });
 
 router.get('/users/:id', (req, res) => { // Id req
+  const userJson = JSON.parse(fs.readFileSync(filepath, 'utf8'));
   const {
     id,
   } = req.params;
