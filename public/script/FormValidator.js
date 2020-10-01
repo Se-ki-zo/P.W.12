@@ -5,7 +5,6 @@ class FormValidator {
         this.errors = this.popup.querySelectorAll('span.popup__warning');
         this.submitButton = this.popup.querySelector('button.button.popup__add-button');
 
-
         this.setEventListeners();
     }
 

@@ -1,18 +1,30 @@
 const express = require('express');
-// Слушаем 3000 порт
-const {
-  PORT = 3000
-} = process.env;
 
+const {
+  PORT = 3000,
+} = process.env;
 const app = express();
 
-app.use(express.static('public')); // раздаем статику
-//app.use(express.static(__dirname + '/public')); // теперь клиент имеет доступ только к публичным файлам // test
+const cards = require('./routes/cards.js');
+const users = require('./routes/users.js');
+const otherReq = require('./routes/other.js');
 
-// app.get('/', (req, res) => { // ???
-//   res.send();
-// });
+app.use('', express.static(`${__dirname}/public`));
 
-app.listen(PORT, () => { // need
-  console.log(`App listening on port ${PORT}`);
+app.use('/', cards);
+app.use('/', users);
+app.use('/', otherReq);
+
+app.listen(PORT, () => {
+  console.log(`
+  ======================
+  Server has been started.
+  ======================
+  Current port: [ ${PORT} ].
+  ======================
+  Current time [ ${new Date().getHours()}:${new Date().getMinutes()} ]
+  ======================
+  Enjoy this crap. :)
+  ======================
+  `);
 });
